@@ -1,5 +1,5 @@
 PODS:
-  - VENCalculatorInputView (1.4.0)
+  - VENCalculatorInputView (2.0.0)
 
 DEPENDENCIES:
   - VENCalculatorInputView (from `./../`)
@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ./../
 
 SPEC CHECKSUMS:
-  VENCalculatorInputView: c531698d42004020f8c1b8bca5e9b860fafc187e
+  VENCalculatorInputView: 0daff1a8189eb8422840f67e3d4601fd2521edcc
 
-COCOAPODS: 0.33.1
+COCOAPODS: 0.34.0.rc2
