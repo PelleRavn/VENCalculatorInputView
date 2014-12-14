@@ -37,8 +37,8 @@
 
 - (void)setLocale:(NSLocale *)locale {
     _locale = locale;
-    NSString *decimalSymbol = [locale objectForKey:NSLocaleDecimalSeparator];
-    [self.decimalButton setTitle:decimalSymbol forState:UIControlStateNormal];
+    //NSString *decimalSymbol = [locale objectForKey:NSLocaleDecimalSeparator];
+    //[self.decimalButton setTitle:decimalSymbol forState:UIControlStateNormal];
 }
 
 - (void)setupButton:(UIButton *)button {

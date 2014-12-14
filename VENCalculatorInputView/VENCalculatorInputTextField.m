@@ -58,6 +58,7 @@
         [lastCharacterString isEqualToString:@"−"] ||
         [lastCharacterString isEqualToString:@"×"] ||
         [lastCharacterString isEqualToString:@"÷"]) {
+        
         NSString *evaluatedString = [self.moneyCalculator evaluateExpression:subString];
         if (evaluatedString) {
             self.text = [NSString stringWithFormat:@"%@%@", evaluatedString, lastCharacterString];
@@ -76,7 +77,7 @@
     NSString *textToEvaluate = [self trimExpressionString:self.text];
     NSString *evaluatedString = [self.moneyCalculator evaluateExpression:textToEvaluate];
     if (evaluatedString) {
-        self.text = evaluatedString;
+        [self setText:evaluatedString];
     }
 }
 
@@ -84,9 +85,14 @@
 #pragma mark - VENCalculatorInputViewDelegate
 
 - (void)calculatorInputView:(VENCalculatorInputView *)inputView didTapKey:(NSString *)key {
+    if([key isEqualToString:@"="]) {
+        [self venCalculatorTextFieldDidEndEditing];
+    }
+    
     if ([self.delegate respondsToSelector:@selector(textField:shouldChangeCharactersInRange:replacementString:)]) {
         NSRange range = [self selectedNSRange];
         if ([self.delegate textField:self shouldChangeCharactersInRange:range replacementString:key]) {
+            
             [self insertText:key];
         }
     } else {
@@ -113,6 +119,7 @@
             [lastCharacterString isEqualToString:@"−"] ||
             [lastCharacterString isEqualToString:@"×"] ||
             [lastCharacterString isEqualToString:@"÷"] ||
+            [lastCharacterString isEqualToString:@"="] ||
             [lastCharacterString isEqualToString:[self decimalSeparator]]) {
             return [self.text substringToIndex:self.text.length - 1];
         }
